@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "records")
@@ -30,4 +31,9 @@ public class Record {
 
     @Column(name = "customer_phone")
     private String customerPhone;
+
+    @ManyToMany
+    @JoinTable(name = "records_items",
+    joinColumns = @JoinColumn(name = "records_id"))
+    private List<Item> items;
 }
